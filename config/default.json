@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://logbox123:logbox123@logbox.ctxou.mongodb.net/testproject?retryWrites=true&w=majority"
+}
