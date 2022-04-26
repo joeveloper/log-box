@@ -1,3 +1,5 @@
+//file contains all the actions that can be performed on the contacts 
+
 const express = require('express');
 
 const router = express.Router();
