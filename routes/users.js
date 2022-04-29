@@ -1,8 +1,10 @@
 const express = require('express');
-const { validationResult, check } = require('express-validator');
-const bcrypt = require('bcryptjs');
-
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const { validationResult, check } = require('express-validator');
+
 
 const User = require('../models/User');
 
@@ -41,23 +43,34 @@ async (req, res) => {
             name,
             email,
             password
-        })
+        });
 
         const salt = await bcrypt.genSaltSync(10);
 
-        const hashedPassword = await bcrypt.hash(password, salt);
-        user.paswsword = hashedPassword;
+        // const hashedPassword = await bcrypt.hash(password, salt);
+        // user.paswsword = hashedPassword;
 
-        // user.password = await bcrypt.hash(password, salt);
+        user.password = await bcrypt.hash(password, salt);
 
         await user.save();
 
-        res.send('User saved')
+        const payload = {
+            user: {
+                id: user.id
+            }
+        }
+
+        jwt.sign(payload, config.get('jwtSecret'), {
+            expiresIn: 360000
+        }, (err, token)=> {
+            if (err) throw err;
+            res.json({token})
+        })
 
     } catch (err) {
-        res.status(500).send('Server error')
         console.log(err.message);
-
+        res.send(err.message)
+        res.status(500).send('Server Errorrrr')
     };
 });
 
