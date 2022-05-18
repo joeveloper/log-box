@@ -15,7 +15,7 @@ app.get('/', (req, res) =>
     // res.send('Successfully connected');
     res.json({
         msg: "welcome to the log box api"
-    }))
+    }));
 
     //Define routes 
 
