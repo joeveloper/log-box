@@ -50,9 +50,9 @@ async function (req, res) {
         //encrypt password to 10 character encryption
         const salt = await bcrypt.genSalt(10);
 
-        const hashedPassword = await bcrypt.hash(this.password, salt)
+        const hashedPassword = await bcrypt.hash(password, salt)
 
-        this.password = hashedPassword;
+        user.password = hashedPassword;
             
         await user.save();
 

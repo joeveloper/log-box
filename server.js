@@ -10,18 +10,17 @@ connectDB()
 
 app.use(express.json({extended: false}));
 
-
-app.get('/', (req, res) => 
-    // res.send('Successfully connected');
-    res.json({
-        msg: "welcome to the log box api"
-    }));
-
+app.get('/', (req, res, next) => {
+    return res.json({
+        msg: "Welcome to the log api"
+    })
+})
+app.use('/api/users', require('./routes/users'));
+app.use('/api/contacts', require('./routes/contacts'));
+app.use('/api/auth', require('./routes/auth'));
     //Define routes 
 
-    app.use('/api/users', require('./routes/users'));
-    app.use('/api/contacts', require('./routes/contacts'));
-    app.use('/api/auth', require('./routes/auth'));
+    
 
 const PORT = process.env.PORT || 5000;
 
