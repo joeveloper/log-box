@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb://logbox123:logbox123@cluster0-shard-00-00.rm71n.mongodb.net:27017,cluster0-shard-00-01.rm71n.mongodb.net:27017,cluster0-shard-00-02.rm71n.mongodb.net:27017/?ssl=true&replicaSet=atlas-5vqnja-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://logbox123:logbox123@logbox.ctxou.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret": "secret"
 }
