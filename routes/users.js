@@ -19,7 +19,7 @@ router.post('/', [
     //input validator and checks
     check('name', 'Please enter your name').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Please enter a password with 6 or more characters').isLength({min: 6})
+    check('password', 'Please enter a password with 6 or more characters').isLength({min: 4})
 ],
 async  (req, res) => {
     //validation conditions
@@ -39,18 +39,19 @@ async  (req, res) => {
             return res.status(400).json({msg: 'user already exists'})
         }
 
-        //if user does not exist, proceed to create a new user
-        user = new User({
-            name,
-            email,
-            password
-        });
-
         //encrypt password to 10 character encryption
         const salt = await bcrypt.genSalt(10);
 
-        user.password = await bcrypt.hash(password, salt);
-            
+        hashedPassword = await bcrypt.hash(password, salt);
+
+        // if user does not exist, proceed to create a new user
+        user = new User({
+            name,
+            email,
+            password: hashedPassword
+        });
+
+        // finally save user
         await user.save();
         
         const payload = {
@@ -58,7 +59,8 @@ async  (req, res) => {
                 id: user.id
             }
         }
-
+        
+        //send sign in token to user
         jwt.sign(payload, config.get('jwtSecret'), {
             expiresIn: 360000
         }, (err, token) => {
