@@ -3,8 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { validationResult, check } = require('express-validator');
-
+const { check, validationResult  } = require('express-validator');
 
 const User = require('../models/User');
 
@@ -22,7 +21,7 @@ router.post('/', [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more characters').isLength({min: 6})
 ],
-async function (req, res) {
+async  (req, res) => {
     //validation conditions
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
@@ -50,12 +49,10 @@ async function (req, res) {
         //encrypt password to 10 character encryption
         const salt = await bcrypt.genSalt(10);
 
-        const hashedPassword = await bcrypt.hash(password, salt)
-
-        user.password = hashedPassword;
+        user.password = await bcrypt.hash(password, salt);
             
         await user.save();
-
+        
         const payload = {
             user: {
                 id: user.id
