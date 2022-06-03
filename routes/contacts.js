@@ -26,8 +26,6 @@ try {
     console.log(err.message);
     res.status(500).send('Server Error');
 }
-
-    res.send("Get all contacts");
 });
 
 //@route    POST api/contacts
@@ -92,7 +90,7 @@ router.put('/:id', auth, async (req, res) => {
         if(contact.user.toString() !== req.user.id) 
             return res.status(401).json({msg: 'User not authorized'});
 
-
+//set the value of contactFields as new value of user 
         contact = await Contact.findByIdAndUpdate(req.params.id, 
             {$set: contactFields},
             {new: true});
