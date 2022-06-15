@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://logbox123:logbox123@logbox.ctxou.mongodb.net/?retryWrites=true&w=majority",
+    "mongoURI":  "mongodb+srv://logbox123:logbox123@logbox.ctxou.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret": "secret"
 }
