@@ -13,32 +13,33 @@ import {
     CLEAR_FILTER
 } from '../types';
 
+const initialState = {
+    contacts: [
+        {id: 1,
+        name: 'jill Johnson',
+        email: 'jill@mail.com',
+        phone: '11111111',
+        type: 'personal'
+        },
+
+        {id: 1,
+            name: 'mario faran',
+            email: 'mario@mail.com',
+            phone: '22222222',
+            type: 'personal'
+        },
+
+        {id: 1,
+            name: 'Lugi james',
+            email: 'lugi@mail.com',
+            phone: '33333333',
+            type: 'personal'
+        }
+    ]
+};
+
 
 const ContactState = props => {
-    const initialState = {
-        contacts: [
-            {id: 1,
-            name: 'jill Johnson',
-            email: 'jill@mail.com',
-            phone: '11111111',
-            type: 'personal'
-            },
-    
-            {id: 1,
-                name: 'mario faran',
-                email: 'mario@mail.com',
-                phone: '22222222',
-                type: 'personal'
-            },
-    
-            {id: 1,
-                name: 'Lugi james',
-                email: 'lugi@mail.com',
-                phone: '33333333',
-                type: 'personal'
-            }
-        ]
-    };
     const [state, dispatch] = useReducer(contactReduer, initialState);
 
     // ADD_CONTACT
@@ -61,8 +62,7 @@ const ContactState = props => {
 
     // CLEAR_FILTER
 
-    return     
-        (
+    return (
         <ContactContext.Provider
         value = {{
             contacts: state.contacts,
