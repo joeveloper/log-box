@@ -11,7 +11,7 @@ import ContactItem from './ContactItem';
   return (
     <Fragment>
       {contacts.map(contact => {
-        <ContactItem/>
+        return <ContactItem key={contact.id}  contact={contact}/>
       })}
     </Fragment>
     
