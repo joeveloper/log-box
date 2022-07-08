@@ -11,11 +11,7 @@ import ContactItem from './ContactItem';
   return (
     <Fragment>
       {contacts.map(contact => {
-<<<<<<< HEAD
         return <ContactItem key={contact.id}  contact={contact}/>
-=======
-        return <ContactItem contact={contact} />
->>>>>>> d09143b1300087800f46dcae2192f631f8af79f1
       })}
     </Fragment>
     
