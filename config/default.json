@@ -1,5 +1,6 @@
 {
-    "mongoURI":  "mongodb+srv://LOGBOX1111:LOGBOX1111@logbox1111.ctxou.mongodb.net/?retryWrites=true&w=majority",
+    "mongoURI":  "mongodb+srv://LOGBOX22:LOGBOX22@logbox22.ctxou.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret": "secret"
 }
+
 

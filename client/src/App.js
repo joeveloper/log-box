@@ -13,8 +13,11 @@ import setAuthToken from './utils/setAuthToken';
 
 import Register from './components/auth/Register';
 import Alerts from './components/layout/Alerts';
+import PrivateRoute from './components/routing/PrivateRoute';
 
-
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 const App = () => {
   return (
@@ -27,7 +30,7 @@ const App = () => {
               <div className="container">
                 <Alerts />
                 <Routes>
-                  <Route exact path='/' element={<Home/>} />
+                  <Route exact path='/' element={<PrivateRoute/>} />
                   <Route exact path='/about' element={<About/>} />
                   <Route exact path='/register' element={<Register/>} />
                   <Route exact path='/login' element={<Login/>} />
