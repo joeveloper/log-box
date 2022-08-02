@@ -71,11 +71,11 @@ const Register = (props) => {
             </div>
             <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" value={password} onChange={onChange} required minLength={6}/>
+                <input type="password" name="password" value={password} onChange={onChange} required minLength={6} autoComplete="off"/>
             </div>
             <div className="form-group">
                 <label htmlFor="password2">Confirm Password</label>
-                <input type="password" name="password2" value={password2} onChange={onChange} required minLength={6}/>
+                <input type="password" name="password2" value={password2} onChange={onChange} required minLength={6} autoComplete="off"/>
             </div>
             <input type="submit" value="register"  className='btn btn-primary btn-block'/>
         </form>
